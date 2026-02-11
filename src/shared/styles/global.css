@@ -59,27 +59,14 @@
     --chart-5: 340 75% 55%;
   }
 
+  * {
+  }
+
   html {
     @apply h-full antialiased;
   }
 
   body {
     @apply h-full bg-background text-foreground;
-    font-family: theme(fontFamily.sans);
-  }
-
-  #root {
-    @apply h-full;
-  }
-}
-
-
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
   }
 }
