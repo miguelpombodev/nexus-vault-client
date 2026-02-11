@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+  }
+
+  .dark {
+    --background: 222.2 47.4% 11.2%;
+    --foreground: 210 40% 98%;
+  }
+
+  html {
+    @apply h-full antialiased;
+  }
+
+  body {
+    @apply h-full bg-background text-foreground;
+    font-family: theme(fontFamily.sans);
+  }
+
+  #root {
+    @apply h-full;
+  }
+}
