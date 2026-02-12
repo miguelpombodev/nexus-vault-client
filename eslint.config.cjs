@@ -21,7 +21,7 @@ module.exports = defineConfig([
       sourceType: "module",
     },
 
-    ignores: ["eslint.config.cjs"],
+    ignores: ["eslint.config.cjs", "postcss.config.cjs"],
 
     extends: fixupConfigRules(
       compat.extends(
