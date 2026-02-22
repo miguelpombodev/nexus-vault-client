@@ -8,6 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        blue_primary: "#4F46E5",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {

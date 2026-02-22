@@ -80,7 +80,7 @@
   }
 
   body {
-    @apply h-full text-foreground bg-blue-600;
+    @apply h-full text-foreground bg-blue_primary;
   }
 
   button {

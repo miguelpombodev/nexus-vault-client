@@ -14,7 +14,7 @@ export function AppSidebarHeader() {
         <SidebarMenuItem>
           <SidebarMenuButton size="lg" asChild>
             <a href="#">
-              <div className="bg-blue-600 text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+              <div className="bg-blue_primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                 <KeyRound className="size-4" />
               </div>
               <div className="flex flex-col gap-0.5 leading-none">

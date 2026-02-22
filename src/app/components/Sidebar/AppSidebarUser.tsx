@@ -6,6 +6,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
+import { useQuery } from "@tanstack/react-query";
 import {
   BadgeCheck,
   Bell,
@@ -14,41 +15,64 @@ import {
   LogOut,
   Sparkles,
 } from "lucide-react";
+import { useEffect, useState } from "react";
 
+import { fetchUserData } from "@/features/users/api/fetchUserData";
+import type { UserDataResponse } from "@/features/users/types/responses/userDataResponse.type";
 import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar,
 } from "@/shared/components/ui/sidebar";
-import user from "@/shared/mocks/nav/navUser.mock";
+import { getUserNameInitials } from "@/shared/utils/names.utils";
 
 import { DropdownMenuCell } from "../DropDownMenu/DropdownMenuCell";
+import { SkeletonAvatar } from "../Skeleton/SkeletonAvatar";
 
 export function AppSidebarUser() {
   const { isMobile } = useSidebar();
+  const {
+    data: userData,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["user"],
+    queryFn: fetchUserData,
+  });
+
   return (
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <SidebarMenuButton
-              size="lg"
-              className="text-primary data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
-            >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage src={user.avatar} alt={user.name} />
-                <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-              </Avatar>
-              <div className="grid flex-1 text-left text-sm leading-tight">
-                <span className="truncate font-medium">{user.name}</span>
-                <span className="truncate text-xs">{user.email}</span>
-              </div>
-              <ChevronsUpDown className="ml-auto size-4" />
-            </SidebarMenuButton>
+            {userData && !isLoading ? (
+              <SidebarMenuButton
+                size="lg"
+                className="text-primary data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+              >
+                <Avatar className="h-11 w-11 rounded-2xl border-blue_primary border-2 p-1">
+                  <AvatarImage
+                    src={userData.avatar}
+                    alt={userData.name}
+                    className=""
+                  />
+                  <AvatarFallback className="rounded-lg border-2 border-blue_primary">
+                    {getUserNameInitials(userData.name)}
+                  </AvatarFallback>
+                </Avatar>
+                <div className="grid flex-1 text-left text-sm leading-tight">
+                  <span className="truncate font-medium">{userData.name}</span>
+                  <span className="truncate text-xs">{userData.email}</span>
+                </div>
+                <ChevronsUpDown className="ml-auto size-4" />
+              </SidebarMenuButton>
+            ) : (
+              <SkeletonAvatar />
+            )}
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg bg-blue-600 flex flex-col justify-center"
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg bg-black flex flex-col justify-center"
             side={isMobile ? "bottom" : "right"}
             align="end"
             sideOffset={4}

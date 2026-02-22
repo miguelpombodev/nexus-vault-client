@@ -21,14 +21,19 @@ export function Header() {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem className="hidden md:block">
-            <BreadcrumbLink className="text-white" href="#">
-              Build Your Application
+            <BreadcrumbLink
+              className="text-white hover:underline hover:text-white"
+              href="#"
+            >
+              Your Dashboard
             </BreadcrumbLink>
           </BreadcrumbItem>
-          <BreadcrumbSeparator className="hidden text-white md:block" />
+          {/* <BreadcrumbSeparator className="hidden text-white md:block" />
           <BreadcrumbItem>
-            <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-          </BreadcrumbItem>
+            <BreadcrumbPage className="text-white cursor-pointer">
+              Data Fetching
+            </BreadcrumbPage>
+          </BreadcrumbItem> */}
         </BreadcrumbList>
       </Breadcrumb>
     </header>
