@@ -1,6 +1,7 @@
 import { Image } from "lucide-react";
 
 import { CategoryCard } from "../components/CategoryCard";
+import { DraggableFileUploader } from "../components/DraggableFileUploader";
 import { SearchInput } from "../components/SearchInput";
 
 export function HomePage() {
@@ -14,6 +15,9 @@ export function HomePage() {
       {/* <div className="bg-white min-h-[100vh] flex-1 rounded-xl md:min-h-min" /> */}
       <div className="w-full flex justify-center items-center py-5">
         <SearchInput />
+      </div>
+      <div className="w-full flex justify-center items-center">
+        <DraggableFileUploader />
       </div>
       <div className="flex flex-col gap-5 bg-white rounded-lg pt-4 pb-10 px-8">
         <h1 className="text-lg font-bold text-gray-600">Categories</h1>

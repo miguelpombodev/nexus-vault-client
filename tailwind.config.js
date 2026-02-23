@@ -8,7 +8,10 @@ export default {
   theme: {
     extend: {
       colors: {
+        green_victory: "#16A34A",
+        seal_blue: "#111827",
         blue_primary: "#4F46E5",
+        low_gray: "#6B7280",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
