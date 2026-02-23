@@ -15,10 +15,8 @@ import {
   LogOut,
   Sparkles,
 } from "lucide-react";
-import { useEffect, useState } from "react";
 
 import { fetchUserData } from "@/features/users/api/fetchUserData";
-import type { UserDataResponse } from "@/features/users/types/responses/userDataResponse.type";
 import {
   SidebarMenu,
   SidebarMenuButton,
