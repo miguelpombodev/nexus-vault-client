@@ -8,10 +8,13 @@ import {
 
 export function SearchInput() {
   return (
-    <InputGroup className="max-w-2xl bg-white focus:outline-none">
-      <InputGroupInput placeholder="Search..." />
+    <InputGroup className="max-w-2xl bg-blue_primary text-white focus:outline-none ">
+      <InputGroupInput
+        placeholder="Search..."
+        className="placeholder:text-white"
+      />
       <InputGroupAddon>
-        <Search />
+        <Search className="text-white" />
       </InputGroupAddon>
     </InputGroup>
   );

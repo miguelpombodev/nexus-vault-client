@@ -22,20 +22,20 @@ export function AppSidebarContent() {
   return (
     <SidebarContent>
       <SidebarGroup>
-        <SidebarGroupLabel>Platform</SidebarGroupLabel>
+        <SidebarGroupLabel className="text-white">Platform</SidebarGroupLabel>
         <SidebarMenu>
           {navOptions.navMain.map((item) => (
             <Collapsible
               key={item.title}
               asChild
               defaultOpen={item.isActive}
-              className="group/collapsible"
+              className="group/collapsible text-white"
             >
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
                     tooltip={item.title}
-                    className="text-primary"
+                    className="text-primary text-white"
                   >
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
@@ -45,10 +45,18 @@ export function AppSidebarContent() {
                 <CollapsibleContent>
                   <SidebarMenuSub>
                     {item.items?.map((subItem) => (
-                      <SidebarMenuSubItem key={subItem.title}>
-                        <SidebarMenuSubButton asChild>
-                          <a href={subItem.url}>
-                            <span>{subItem.title}</span>
+                      <SidebarMenuSubItem
+                        className="hover:text-black"
+                        key={subItem.title}
+                      >
+                        <SidebarMenuSubButton
+                          className="hover:text-black"
+                          asChild
+                        >
+                          <a href={subItem.url} className="hover:text-black">
+                            <span className="text-white hover:text-black">
+                              {subItem.title}
+                            </span>
                           </a>
                         </SidebarMenuSubButton>
                       </SidebarMenuSubItem>

@@ -88,8 +88,10 @@ export function DraggableFileUploader() {
             ${isDragging ? "bg-blue-100 border-blue-500" : "bg-gray-100 border-gray-400"}
             `}
       >
-        <Upload size={30} />
-        <span className="text-sm">Drag and drop to upload your files</span>
+        <Upload size={30} className="text-blue_primary" />
+        <span className="text-sm text-blue_primary">
+          Drag and drop to upload your files
+        </span>
 
         <input
           type="file"
@@ -102,22 +104,24 @@ export function DraggableFileUploader() {
 
       <label
         htmlFor="fileInput"
-        className="cursor-pointer text-sm underline text-white"
+        className="cursor-pointer text-sm underline text-blue_primary"
       >
         Or click to select files
       </label>
 
-      <div className="w-1/2 flex flex-col bg-white rounded-2xl gap-5 p-5">
-        <h3 className="text-lg font-bold text-center">Files To Be Uploaded</h3>
+      <div className="w-1/2 flex flex-col bg-blue_primary rounded-2xl gap-5 p-5">
+        <h3 className="text-lg font-bold text-center text-white">
+          Files To Be Uploaded
+        </h3>
 
         {files.length > 0 ? (
           <ul className="text-sm">
             {files.map((file, index) => (
               <li
-                className="flex justify-between items-center p-2 border-b-2 border-blue_primary"
+                className="flex justify-between items-center p-2 border-b-2 border-white"
                 key={index}
               >
-                <span className="flex justify-center items-center gap-3">
+                <span className="flex justify-center items-center gap-3 text-white">
                   <div className="bg-green_victory rounded p-2">
                     {handleSelectedFileIcon(file)}
                   </div>
@@ -133,7 +137,9 @@ export function DraggableFileUploader() {
             ))}
           </ul>
         ) : (
-          <p className="text-center p-3">No files selected to be uploaded 🤔</p>
+          <p className="text-center p-3 text-white">
+            No files selected to be uploaded 🤔
+          </p>
         )}
       </div>
     </div>

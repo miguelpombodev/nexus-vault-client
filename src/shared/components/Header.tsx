@@ -1,41 +1,15 @@
 import { Separator } from "@radix-ui/react-separator";
 
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "./ui/breadcrumb";
 import { SidebarTrigger } from "./ui/sidebar";
 
 export function Header() {
   return (
     <header className="flex h-16 shrink-0 items-center gap-2 px-4">
-      <SidebarTrigger className="-ml-1" />
+      <SidebarTrigger className="-ml-1 text-blue_primary" />
       <Separator
         orientation="vertical"
         className="mr-2 data-[orientation=vertical]:h-4"
       />
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem className="hidden md:block">
-            <BreadcrumbLink
-              className="text-white hover:underline hover:text-white"
-              href="#"
-            >
-              Your Dashboard
-            </BreadcrumbLink>
-          </BreadcrumbItem>
-          {/* <BreadcrumbSeparator className="hidden text-white md:block" />
-          <BreadcrumbItem>
-            <BreadcrumbPage className="text-white cursor-pointer">
-              Data Fetching
-            </BreadcrumbPage>
-          </BreadcrumbItem> */}
-        </BreadcrumbList>
-      </Breadcrumb>
     </header>
   );
 }

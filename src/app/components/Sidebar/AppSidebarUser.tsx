@@ -47,31 +47,35 @@ export function AppSidebarUser() {
             {userData && !isLoading ? (
               <SidebarMenuButton
                 size="lg"
-                className="text-primary data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
+                className="text-primary data-[state=open]:bg-dark-blue-primary data-[state=open]:text-dark-blue-primary"
               >
-                <Avatar className="h-11 w-11 rounded-2xl border-blue_primary border-2 p-1">
+                <Avatar className="h-11 w-11 rounded-2xl border-white border-2 p-1">
                   <AvatarImage
                     src={userData.avatar}
                     alt={userData.name}
                     className=""
                   />
-                  <AvatarFallback className="rounded-lg border-2 border-blue_primary">
+                  <AvatarFallback className="rounded-lg border-2 border-white">
                     {getUserNameInitials(userData.name)}
                   </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">{userData.name}</span>
-                  <span className="truncate text-xs">{userData.email}</span>
+                  <span className="truncate font-medium text-white">
+                    {userData.name}
+                  </span>
+                  <span className="truncate text-xs text-white">
+                    {userData.email}
+                  </span>
                 </div>
-                <ChevronsUpDown className="ml-auto size-4" />
+                <ChevronsUpDown className="ml-auto size-4 text-white" />
               </SidebarMenuButton>
             ) : (
               <SkeletonAvatar />
             )}
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg bg-black flex flex-col justify-center"
-            side={isMobile ? "bottom" : "right"}
+            className="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg bg-blue_primary flex flex-col justify-center border border-white"
+            side={isMobile ? "bottom" : "top"}
             align="end"
             sideOffset={4}
           >

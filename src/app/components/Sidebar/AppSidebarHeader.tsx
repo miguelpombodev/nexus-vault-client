@@ -14,11 +14,13 @@ export function AppSidebarHeader() {
         <SidebarMenuItem>
           <SidebarMenuButton size="lg" asChild>
             <a href="#">
-              <div className="bg-blue_primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                <KeyRound className="size-4" />
+              <div className="bg-white text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
+                <KeyRound className="size-4 text-blue_primary" />
               </div>
               <div className="flex flex-col gap-0.5 leading-none">
-                <span className="font-medium">Nexus Vault Secret</span>
+                <span className="font-medium text-white">
+                  Nexus Vault Secret
+                </span>
               </div>
             </a>
           </SidebarMenuButton>
