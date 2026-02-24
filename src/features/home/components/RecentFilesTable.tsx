@@ -8,7 +8,7 @@ export function RecentFilesTable() {
         <span>Extension</span>
       </div>
 
-      <div className="flex flex-col border border-t-0 border-blue_primary rounded-b-xl text-blue_primary font-medium">
+      <div className="flex flex-col border-blue_primary text-blue_primary font-medium last:border-b-0">
         {[1, 2, 3, 4, 5].map((_, index) => (
           <div
             key={index}
