@@ -49,7 +49,7 @@ export function AppSidebarUser() {
                 size="lg"
                 className="text-primary data-[state=open]:bg-dark-blue-primary data-[state=open]:text-dark-blue-primary"
               >
-                <Avatar className="h-11 w-11 rounded-2xl border-white border-2 p-1">
+                <Avatar className="h-11 w-11 rounded-2xl border-dark-blue-primary border-2 p-1 md:border-white">
                   <AvatarImage
                     src={userData.avatar}
                     alt={userData.name}
@@ -60,14 +60,14 @@ export function AppSidebarUser() {
                   </AvatarFallback>
                 </Avatar>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium text-white">
+                  <span className="truncate font-medium text-dark-blue-primary md:text-white">
                     {userData.name}
                   </span>
-                  <span className="truncate text-xs text-white">
+                  <span className="truncate text-xs text-dark-blue-primary md:text-white">
                     {userData.email}
                   </span>
                 </div>
-                <ChevronsUpDown className="ml-auto size-4 text-white" />
+                <ChevronsUpDown className="ml-auto size-4 text-dark-blue-primary md:text-white" />
               </SidebarMenuButton>
             ) : (
               <SkeletonAvatar />

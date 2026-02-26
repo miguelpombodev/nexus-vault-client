@@ -22,20 +22,22 @@ export function AppSidebarContent() {
   return (
     <SidebarContent>
       <SidebarGroup>
-        <SidebarGroupLabel className="text-white">Platform</SidebarGroupLabel>
+        <SidebarGroupLabel className="text-dark-blue-primary md:text-white">
+          Platform
+        </SidebarGroupLabel>
         <SidebarMenu>
           {navOptions.navMain.map((item) => (
             <Collapsible
               key={item.title}
               asChild
               defaultOpen={item.isActive}
-              className="group/collapsible text-white"
+              className="group/collapsible text-dark-blue-primary md:text-white"
             >
               <SidebarMenuItem>
                 <CollapsibleTrigger asChild>
                   <SidebarMenuButton
                     tooltip={item.title}
-                    className="text-primary text-white"
+                    className="text-primary text-dark-blue-primary md:text-white"
                   >
                     {item.icon && <item.icon />}
                     <span>{item.title}</span>
@@ -43,18 +45,12 @@ export function AppSidebarContent() {
                   </SidebarMenuButton>
                 </CollapsibleTrigger>
                 <CollapsibleContent>
-                  <SidebarMenuSub>
+                  <SidebarMenuSub className="hover:text-black">
                     {item.items?.map((subItem) => (
-                      <SidebarMenuSubItem
-                        className="hover:text-black"
-                        key={subItem.title}
-                      >
-                        <SidebarMenuSubButton
-                          className="hover:text-black"
-                          asChild
-                        >
+                      <SidebarMenuSubItem key={subItem.title}>
+                        <SidebarMenuSubButton asChild>
                           <a href={subItem.url} className="hover:text-black">
-                            <span className="text-white hover:text-black">
+                            <span className="text-dark-blue-primary md:text-white hover:text-black">
                               {subItem.title}
                             </span>
                           </a>
