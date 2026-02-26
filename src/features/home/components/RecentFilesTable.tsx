@@ -1,4 +1,15 @@
-export function RecentFilesTable() {
+import { handleSelectedFileIcon } from "@/shared/utils/icons.utils";
+import { truncateString } from "@/shared/utils/names.utils";
+
+import type { UserRecentFile } from "../types/responses/userRecentFile.type";
+
+type RecentFilesTableProps = {
+  recentFiles: UserRecentFile[] | undefined;
+};
+
+export function RecentFilesTable({ recentFiles }: RecentFilesTableProps) {
+  const truncatedFileNameStringLength = 25;
+
   return (
     <div className="w-full">
       <div className="overflow-x-auto">
@@ -16,20 +27,33 @@ export function RecentFilesTable() {
           </div>
 
           <div className="flex flex-col text-blue_primary font-medium">
-            {[1, 2, 3, 4, 5].map((_, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-[2fr_1fr_2fr_1fr]
+            {recentFiles &&
+              recentFiles.map((file) => {
+                const Icon = handleSelectedFileIcon(file.extension);
+
+                return (
+                  <div
+                    key={file.id}
+                    className="grid grid-cols-[2fr_1fr_2fr_1fr]
                            place-items-center
                            border-b border-blue_primary
                            py-4 px-6"
-              >
-                <span>File name with icon</span>
-                <span>12/02/2025</span>
-                <span>Teste teste teste</span>
-                <span>PDF</span>
-              </div>
-            ))}
+                  >
+                    <span className="flex w-full gap-2 items-start text-blue_primary">
+                      <Icon size={25} />
+                      <span>
+                        {truncateString(
+                          file.filename,
+                          truncatedFileNameStringLength,
+                        )}
+                      </span>
+                    </span>
+                    <span>{file.date}</span>
+                    <span>{file.description}</span>
+                    <span className="font-bold">{file.extension}</span>
+                  </div>
+                );
+              })}
           </div>
         </div>
       </div>

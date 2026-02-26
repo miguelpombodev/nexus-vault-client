@@ -1,18 +1,7 @@
-import {
-  File,
-  FileMusic,
-  FilePenLine,
-  Image,
-  Trash,
-  Upload,
-} from "lucide-react";
+import { Trash, Upload } from "lucide-react";
 import { useState, type DragEvent } from "react";
 
-import {
-  imageTypes,
-  documentTypes,
-  mediaTypes,
-} from "@/shared/constants/files.constants";
+import { handleSelectedFileIcon } from "@/shared/utils/icons.utils";
 
 export function DraggableFileUploader() {
   const [isDragging, setIsDragging] = useState(false);
@@ -58,24 +47,6 @@ export function DraggableFileUploader() {
     setFiles(newFilesList);
   }
 
-  function handleSelectedFileIcon(file: File) {
-    const fileType = file.type.split("/")[1].toLocaleLowerCase();
-
-    if (imageTypes.includes(fileType)) {
-      return <Image size={20} className="text-white" />;
-    }
-
-    if (documentTypes.includes(fileType)) {
-      return <FilePenLine size={20} className="text-white" />;
-    }
-
-    if (mediaTypes.includes(fileType)) {
-      return <FileMusic size={20} className="text-white" />;
-    }
-
-    return <File size={20} className="text-white" />;
-  }
-
   return (
     <div className="flex flex-col w-full items-center gap-4">
       <div
@@ -84,12 +55,12 @@ export function DraggableFileUploader() {
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
         className={`
-            flex flex-col justify-center items-center w-1/2 h-36 border-2 border-dashed rounded-2xl transition-colors
+            flex flex-col gap-3 justify-center items-center w-1/2 h-36 border-2 border-dashed rounded-2xl transition-colors
             ${isDragging ? "bg-blue-100 border-blue-500" : "bg-gray-100 border-gray-400"}
             `}
       >
         <Upload size={30} className="text-blue_primary" />
-        <span className="text-sm text-blue_primary">
+        <span className="text-sm text-blue_primary text-center">
           Drag and drop to upload your files
         </span>
 
@@ -109,32 +80,35 @@ export function DraggableFileUploader() {
         Or click to select files
       </label>
 
-      <div className="w-1/2 flex flex-col bg-blue_primary rounded-2xl gap-5 p-5">
+      <div className="w-full flex flex-col bg-blue_primary rounded-2xl gap-5 p-5 md:w-1/2">
         <h3 className="text-lg font-bold text-center text-white">
           Files To Be Uploaded
         </h3>
 
         {files.length > 0 ? (
           <ul className="text-sm">
-            {files.map((file, index) => (
-              <li
-                className="flex justify-between items-center p-2 border-b-2 border-white"
-                key={index}
-              >
-                <span className="flex justify-center items-center gap-3 text-white">
-                  <div className="bg-green_victory rounded p-2">
-                    {handleSelectedFileIcon(file)}
-                  </div>
-                  {file.name}
-                </span>
-                <div
-                  className="p-2 rounded-lg border-none bg-red-600 cursor-pointer"
-                  onClick={() => handleDeleteFileFromList(index)}
+            {files.map((file, index) => {
+              const Icon = handleSelectedFileIcon(file.type);
+              return (
+                <li
+                  className="flex justify-between items-center p-2 border-b-2 border-white"
+                  key={index}
                 >
-                  <Trash size={20} className="text-white" />
-                </div>
-              </li>
-            ))}
+                  <span className="flex justify-center items-center gap-3 text-white">
+                    <div className="bg-green_victory rounded p-2">
+                      <Icon size={25} />
+                    </div>
+                    {file.name}
+                  </span>
+                  <div
+                    className="p-2 rounded-lg border-none bg-red-600 cursor-pointer"
+                    onClick={() => handleDeleteFileFromList(index)}
+                  >
+                    <Trash size={20} className="text-white" />
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         ) : (
           <p className="text-center p-3 text-white">
